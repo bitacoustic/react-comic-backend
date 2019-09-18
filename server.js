@@ -4,9 +4,14 @@ const bodyParser = require('body-parser')
 const page = require('./src/routes/page.route')
 const app = express()
 
+const fs = require('fs')
+let dbData_json = fs.readFileSync('db.json')
+let dbData = JSON.parse(dbData_json)
+
+
 const mongoose = require('mongoose')
 mongoose.set('useUnifiedTopology', true)
-let devDB = 'mongodb+srv://reactcomictest:egVbf1AP5EUj7oDT@cluster0-xdny8.mongodb.net/test?retryWrites=true&w=majority'
+let devDB = dbData.endpoint
 const mongoDB = process.env.MONGODB_URI || devDB
 mongoose.connect(mongoDB, { useNewUrlParser: true })
 mongoose.Promise = global.Promise

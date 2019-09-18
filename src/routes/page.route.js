@@ -16,4 +16,5 @@ router.put('/:id/update', page_controller.page_update)
 
 router.delete('/:id/delete', page_controller.page_delete)
 
+
 module.exports = router
